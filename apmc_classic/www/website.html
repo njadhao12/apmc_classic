@@ -1,0 +1,850 @@
+    <!DOCTYPE html>
+    <html lang="mr">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manchar APMC</title>
+
+    <style>
+    body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+    }
+
+    /* Header */
+    header{
+    background:#fff;
+    padding:10px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    }
+
+    .logo{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    }
+
+    .logo img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    }
+
+    .title h1{
+    margin:0;
+    color:#0b6b1e;
+    font-size:34px;
+    }
+
+    .title p{
+    margin:2px 0;
+    color:#444;
+    }
+
+    .toplinks{
+    font-size:14px;
+    text-align:right;
+    }
+
+    /* Menu */
+    .nav{
+    background:#0a7a16;
+    color:#fff;
+    display:flex;
+    gap:20px;
+    padding:12px 20px;
+    font-weight:bold;
+    flex-wrap:wrap;
+    }
+
+    .nav a{
+    color:#fff;
+    text-decoration:none;
+    }
+
+    /* Hero */
+    .hero{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    background:#dfeef7;
+    }
+
+    .left{
+    padding:30px;
+    }
+
+    .left h2{
+    font-size:42px;
+    margin:0;
+    color:#214d1d;
+    }
+
+    .left p{
+    font-size:22px;
+    }
+
+    .btn{
+    display:inline-block;
+    background:#0a7a16;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    margin-top:10px;
+    }
+
+    .hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    }
+
+    /* Cards */
+    .cards{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    padding:18px;
+    }
+
+    .card{
+    background:#fff;
+    padding:18px;
+    border-radius:14px;
+    text-align:center;
+    font-weight:bold;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    cursor:pointer;
+    }
+
+    .card small{
+    display:block;
+    margin-top:8px;
+    color:#666;
+    }
+
+    /* ===== NEW IMAGE SECTION ===== */
+    .apmc-home{
+    padding:20px;
+    background:#f5f5f5;
+    }
+
+    .apmc-grid{
+    display:grid;
+    grid-template-columns:2fr 3fr 1fr;
+    gap:15px;
+    margin-bottom:18px;
+    }
+
+    .apmc-box{
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .apmc-title{
+    background:#0a7a16;
+    color:#fff;
+    padding:12px;
+    font-size:20px;
+    font-weight:bold;
+    }
+
+    .apmc-body{
+    padding:14px;
+    }
+
+    .apmc-body table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:15px;
+    }
+
+    .apmc-body table th,
+    .apmc-body table td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:center;
+    }
+
+    .apmc-body ul{
+    padding-left:18px;
+    line-height:28px;
+    }
+
+    .apmc-body a{
+    display:block;
+    padding:8px 0;
+    text-decoration:none;
+    color:#333;
+    border-bottom:1px solid #eee;
+    }
+
+    .apmc-btn{
+    display:block;
+    background:#0a7a16 !important;
+    color:#fff !important;
+    padding:10px;
+    text-align:center;
+    border-radius:6px;
+    margin-top:10px;
+    text-decoration:none;
+    font-weight:bold;
+    }
+
+    .gallery-wrap{
+    background:#fff;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    margin-bottom:20px;
+    }
+
+    .gallery-wrap h2{
+    color:#0a7a16;
+    margin-bottom:15px;
+    }
+
+    .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    }
+
+    .gallery-grid img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:8px;
+    }
+
+    .apmc-footer{
+    background:#0a7a16;
+    color:#fff;
+    padding:40px 20px 20px;
+    border-radius:10px;
+    }
+
+    .apmc-footer-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    }
+
+    .apmc-footer h3{
+    margin-bottom:12px;
+    font-size:18px;
+    border-bottom:2px solid rgba(255,255,255,0.3);
+    display:inline-block;
+    padding-bottom:5px;
+    }
+
+    .apmc-footer p{
+    line-height:24px;
+    font-size:14px;
+    }
+
+    .apmc-footer ul{
+    list-style:none;
+    padding:0;
+    }
+
+    .apmc-footer ul li{
+    margin-bottom:8px;
+    }
+
+    .apmc-footer ul li a{
+    text-decoration:none;
+    color:#fff;
+    font-size:14px;
+    transition:0.3s;
+    }
+
+    .apmc-footer ul li a:hover{
+    color:#ffd700;
+    padding-left:5px;
+    }
+
+    .footer-bottom{
+    text-align:center;
+    margin-top:25px;
+    padding-top:15px;
+    border-top:1px solid rgba(255,255,255,0.3);
+    font-size:13px;
+    }
+
+    /* Popup */
+    .popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    z-index:999;
+    justify-content:center;
+    align-items:center;
+    }
+
+    .popup-box{
+    background:#fff;
+    width:95%;
+    max-width:700px;
+    padding:25px;
+    border-radius:14px;
+    max-height:90vh;
+    overflow:auto;
+    position:relative;
+    }
+
+    .close-btn{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:28px;
+    cursor:pointer;
+    color:red;
+    font-weight:bold;
+    }
+
+    .popup-box h2{
+    margin-top:0;
+    text-align:center;
+    color:#0a7a16;
+    }
+
+    input,textarea,select{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    box-sizing:border-box;
+    }
+
+    textarea{
+    min-height:120px;
+    resize:vertical;
+    }
+
+    .submit-btn{
+    width:100%;
+    padding:14px;
+    background:#0a7a16;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    }
+
+    #msg{
+    margin-top:15px;
+    text-align:center;
+    font-weight:bold;
+    }
+
+    .live-headline{
+    background:#0a7a16;
+    color:#ffffff;
+    padding:8px 14px;
+    font-size:16px;
+    font-weight:600;
+    margin:12px 18px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.10);
+    }
+
+    .live-headline marquee{
+    font-family:Arial,sans-serif;
+    line-height:22px;
+    }
+
+    .apmc-subtitle{
+        font-size:16px;        
+        margin-top:10px;
+        color:#0a7a16;
+        background:#eaf7ee;
+        padding:10px 14px;    
+        border-radius:8px;
+        display:inline-block;
+        line-height:22px;     
+    }
+
+    .popup-box table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+    font-size:16px;
+    }
+
+    .popup-box table th,
+    .popup-box table td{
+        border:1px solid #ddd;
+        padding:10px;
+        text-align:center;
+    }
+
+    .popup-box table th{
+        background:#0a7a16;
+        color:#fff;
+    }
+
+    .popup-box h2{
+        margin-bottom:10px;
+        font-size:22px;
+    }
+
+    @media(max-width:900px){
+    .hero{
+    grid-template-columns:1fr;
+    }
+    .cards{
+    grid-template-columns:1fr 1fr;
+    }
+    .apmc-grid,
+    .apmc-footer-grid{
+    grid-template-columns:1fr 1fr;
+    }
+    .gallery-grid{
+    grid-template-columns:1fr 1fr;
+    }
+    .title h1{
+    font-size:24px;
+    }
+    }
+
+
+    @media(max-width:600px){
+    .apmc-grid,
+    .apmc-footer-grid,
+    .gallery-grid{
+    grid-template-columns:1fr;
+    }
+    }
+    </style>
+    </head>
+
+    <body>
+
+    {% set company = frappe.get_all("Company",
+    fields=["company_name","company_logo"],
+    limit=1)[0] %}
+
+    {% set contact = frappe.get_all("Contact Details",
+    fields=["office_address","phone","email"],
+    limit=1)[0] %}
+
+    <!-- ✅ Home page के लिए सिर्फ 1 news -->
+    {% set latest_news = frappe.get_all("Blog Post",
+        fields=["title", "meta_image", "published_on", "route"],
+        filters={"published": 1},
+        order_by="published_on desc",
+        limit=1
+    ) %}
+
+    <!-- ✅ Popup के लिए सारी news -->
+    {% set all_news = frappe.get_all("Blog Post",
+        fields=["title", "meta_image", "published_on", "route"],
+        filters={"published": 1},
+        order_by="published_on desc"
+    ) %}
+
+    <header>
+
+    <div class="logo">
+
+    <img src="{{ company.company_logo }}">
+
+    <div class="title">
+
+    <h1>{{ company.company_name }}</h1>
+
+    <p>{{ contact.office_address }}</p>
+
+    </div>
+    </div>
+
+    <div class="toplinks">
+
+    <a href="?lang=mr">मराठी</a> |
+    <a href="?lang=en">English</a>
+    <br>
+    कार्यालय : {{ contact.phone }} <br>
+    ई-मेल : {{ contact.email }}
+
+    </div>
+
+    </header>
+
+    <nav class="nav">
+    <a href="#" id="homeMenu">मुखपृष्ठ</a>
+    <a href="/about-us">आमच्याबद्दल</a>
+    <a href="/directors">संचालक मंडळ</a>
+    <a href="/staff">अधिकारी व कर्मचारी</a>
+    <a href="/bajar-rate">बाजार भाव</a>
+    <a href="#" id="auctionMenu">लिलाव माहिती</a>
+    <a href="#" id="newsMenu">बातम्या</a>
+    <a href="#" id="galleryMenu">गॅलरी</a>
+    <a href="#" id="contactMenu">संपर्क</a>
+    </nav>
+
+    <div class="live-headline">
+
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+
+    🌾 आजचे बाजार भाव • {{ today_date }} •
+
+    {% for row in market_rates %}
+
+    {{ row.product_name }} ₹{{ row.avg_price }}
+
+    {% if not loop.last %}
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    {% endif %}
+
+    {% endfor %}
+
+    </marquee>
+
+    </div>
+
+    <style>
+    .nav{
+        display:flex;
+        justify-content:center;
+        gap:30px;   /* distance */
+        flex-wrap:wrap;
+    }
+
+    .nav a{
+        text-decoration:none;
+        font-size:18px;
+        padding:10px;
+        color:inherit;   
+    }
+    </style>
+
+    <section class="hero" id="homeSection">
+    <div class="left">
+    <h2>आपले स्वागत आहे!</h2>
+    <p>शेतकरी, व्यापारी आणि ग्राहक यांच्यासाठी पारदर्शक व विश्वासार्ह बाजारपेठ.</p>
+    <a href="/about-us" class="btn">अधिक जाणून घ्या</a>
+    </div>
+
+    <img src="/files/krushi-utpann-bajar-samiti-manchar.png">
+    </section>
+    <!-- 
+
+    <section class="cards">
+    <div class="card">आजचे बाजार भाव</div>
+    <div class="card">लिलाव माहिती</div>
+    <div class="card">बातम्या</div>
+    </section> -->
+
+    <!-- NEW IMAGE SECTION -->
+    <section class="apmc-home">
+
+    <div class="apmc-grid">
+
+    <div class="apmc-box">
+    <div class="apmc-title">
+    आजचे बाजार भाव (ता. {{ frappe.utils.formatdate(frappe.utils.nowdate(), "dd MMMM yyyy") }})
+    </div>
+    <div class="apmc-body">
+    <table>
+    <tr><th>पिक</th><th>किमान</th><th>कमाल</th><th>सरासरी</th></tr>
+    {% for row in market_rates %}
+    <tr>
+        <td>{{ row.product_name }}</td>
+        <td>{{ row.min_price }}</td>
+        <td>{{ row.max_price }}</td>
+        <td>{{ row.avg_price }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <a href="/bajar-rate" class="apmc-btn">सर्व भाव पहा</a>
+    </div>
+    </div>
+
+    <div class="apmc-box" id="newsSection">
+    <div class="apmc-title" style="text-align:center;">📰 बातम्या</div>
+    <p class="apmc-subtitle">
+        कृषी बाजाराशी संबंधित ताज्या घडामोडी, अपडेट्स आणि महत्वाच्या सूचना येथे पाहा.
+    </p>
+
+    <div class="apmc-body">
+
+    {% for post in latest_news %}
+        <div style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
+
+            {% if post.meta_image %}
+                <img src="{{ post.meta_image }}" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
+            {% endif %}
+
+            <h4 style="margin:8px 0;">
+                <a href="{{ post.route }}" style="text-decoration:none; color:#0a7a16;">
+                    {{ post.title }}
+                </a>
+            </h4>
+
+            <small style="color:#666;">
+                {{ frappe.utils.formatdate(post.published_on, "dd MMM yyyy") }}
+            </small>
+
+        </div>
+    {% endfor %}
+
+    </div>
+    </div>
+
+    <div class="apmc-box">
+    <div class="apmc-title">त्वरित दुवे</div>
+
+    <div class="apmc-body">
+
+    <a href="/bajar-rate">📊 बाजार भाव</a>
+    <a href="#" id="newsMenu">📰 बातम्या</a>
+    <a href="#" id="auctionMenu">🧾 लिलाव माहिती</a>
+    <a href="/staff">👨‍💼 अधिकारी व कर्मचारी</a>
+    <a href="#" id="galleryMenu">🖼️ गॅलरी</a>
+    <a href="#" id="contactMenu">📞 संपर्क करा</a>
+
+    </div>
+    </div>
+
+    </div>
+
+    <div class="gallery-wrap" id="gallerySection">
+    <h2>गॅलरी</h2>
+
+    <div class="gallery-grid">
+        {% for row in gallery %}
+            <div>
+                <img src="{{ row.image }}" width="250">
+                <!-- <p>{{ row.title }}</p> -->
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+    </div>
+
+    <div class="apmc-footer">
+
+    <div class="apmc-footer-grid">
+
+    <!-- About -->
+    <div>
+    <h3>मंचर कृषी उत्पन्न बाजार समिती</h3>
+    <p>ता. आंबेगाव, जि. पुणे - 410503</p>
+
+    <p>📞 02133-223125</p>
+    <p>📧 mancharapmc@gmail.com</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+    <h3>महत्वाचे दुवे</h3>
+    <ul>
+    <li><a href="#">मुखपृष्ठ</a></li>
+    <li><a href="#">आमच्याबद्दल</a></li>
+    <li><a href="#">बाजार भाव</a></li>
+    <li><a href="#">बातम्या</a></li>
+    </ul>
+    </div>
+
+    <!-- Services -->
+    <div>
+    <h3>सेवा</h3>
+    <ul>
+    <li><a href="#">लिलाव माहिती</a></li>
+    <li><a href="#">गॅलरी</a></li>
+    <li><a href="#">संपर्क</a></li>
+    </ul>
+    </div>
+
+    <!-- Map / Address -->
+    <div>
+    <h3>आम्हाला भेट द्या</h3>
+    <p>मंचर कृषी उत्पन्न बाजार समिती,<br>
+    मंचर, ता. आंबेगाव,<br>
+    जि. पुणे - 410503</p>
+    </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+    © 2026 Manchar APMC | All Rights Reserved
+    </div>
+
+    </div>
+
+    </section>
+
+    <!-- Popup -->
+    <div class="popup" id="complaintPopup">
+    <div class="popup-box">
+
+
+    <span class="close-btn" onclick="closeComplaint()">×
+
+    </span>
+
+    <div id="msg"></div>
+
+    </div>
+    </div>
+
+    <div class="popup" id="contactPopup">
+    <div class="popup-box">
+
+    <span class="close-btn" onclick="closeContact()">×</span>
+
+    <h2>संपर्क फॉर्म</h2>
+
+    <form id="contactForm">
+
+    <input type="text" placeholder="पूर्ण नाव" required>
+    <input type="text" placeholder="मोबाईल नंबर" required>
+    <input type="email" placeholder="ई-मेल">
+    <textarea placeholder="तुमचा संदेश"></textarea>
+
+    <button type="submit" class="submit-btn">पाठवा</button>
+
+    </form>
+
+    <div id="contactMsg"></div>
+
+    </div>
+    </div>
+    <div class="popup" id="auctionPopup">
+    <div class="popup-box">
+
+        <span class="close-btn" onclick="closeAuction()">×</span>
+
+        <h2>🧾 लिलाव माहिती</h2>
+
+        <table style="width:100%; border-collapse:collapse;">
+            <tr>
+                <th>माल</th>
+                <th>आवक</th>
+                <th>किमान</th>
+                <th>कमाल</th>
+            </tr>
+
+            <tr>
+                <td>कांदा</td>
+                <td>120 क्विंटल</td>
+                <td>₹1500</td>
+                <td>₹1800</td>
+            </tr>
+
+            <tr>
+                <td>टोमॅटो</td>
+                <td>80 क्विंटल</td>
+                <td>₹2000</td>
+                <td>₹2200</td>
+            </tr>
+        </table>
+
+    </div>
+    </div>
+
+    <div class="popup" id="newsPopup">
+    <div class="popup-box">
+
+        <span class="close-btn" onclick="closeNews()">×</span>
+
+        <h2>📰 सर्व बातम्या</h2>
+
+        {% for post in all_news %}
+            <div style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
+
+                {% if post.meta_image %}
+                    <img src="{{ post.meta_image }}" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
+                {% endif %}
+
+                <h4>
+                    <a href="{{ post.route }}" style="color:#0a7a16; text-decoration:none;">
+                        {{ post.title }}
+                    </a>
+                </h4>
+
+                <small style="color:#666;">
+                    {{ frappe.utils.formatdate(post.published_on, "dd MMM yyyy") }}
+                </small>
+
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+    <script>
+    document.getElementById("contactMenu").onclick=function(e){
+    e.preventDefault();
+    document.getElementById("contactPopup").style.display="flex";
+    };
+
+    function closeContact(){
+    document.getElementById("contactPopup").style.display="none";
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    document.getElementById("contactMsg").innerHTML="संदेश पाठवला.";
+    document.getElementById("contactForm").reset();
+
+    });
+
+    document.getElementById("galleryMenu").onclick=function(e){
+
+    e.preventDefault();
+
+    document.getElementById("gallerySection").scrollIntoView({
+    behavior:"smooth"
+    });
+
+    };
+
+    document.getElementById("newsMenu").onclick = function(e){
+    e.preventDefault();
+    document.getElementById("newsPopup").style.display = "flex";
+    };
+
+    function closeNews(){
+        document.getElementById("newsPopup").style.display = "none";
+    }
+
+    document.getElementById("auctionMenu").onclick = function(e){
+    e.preventDefault();
+    document.getElementById("auctionPopup").style.display = "flex";
+    };
+
+    function closeAuction(){
+        document.getElementById("auctionPopup").style.display = "none";
+    }
+
+
+    document.getElementById("homeMenu").onclick = function(e){
+    e.preventDefault();
+
+    document.getElementById("homeSection").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    };
+    </script>
+
+    </body>
+    </html>

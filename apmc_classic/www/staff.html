@@ -1,0 +1,163 @@
+{% set company_list = frappe.get_all("Company",
+    fields=["company_name","company_logo"],
+    limit=1) %}
+{% set company = company_list[0] if company_list else {} %}
+
+{% set contact_list = frappe.get_all("Contact Details",
+    fields=["office_address","phone","email"],
+    limit=1) %}
+{% set contact = contact_list[0] if contact_list else {} %}
+
+<style>
+body{
+    background:linear-gradient(to bottom, #eaf7ee, #ffffff);
+    margin:0;
+    font-family:Arial, sans-serif;
+}
+
+/* 🔥 HEADER */
+.top-header{
+    background:#f2f2f2;
+    padding:10px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.top-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.top-left img{
+    height:70px;
+    width:70px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.top-right{
+    text-align:right;
+    font-size:14px;
+}
+
+/* NAVBAR */
+.nav{
+    background:#0a7a16;
+    padding:12px 20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+.nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    padding:8px 12px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+.nav a:hover{
+    background:white;
+    color:#0a7a16;
+}
+
+/* बाकी same */
+h1{
+    text-align:center;
+    margin:20px 0;
+    color:#0a7a16;
+}
+
+.staff-card{
+    background: linear-gradient(145deg, #ffffff, #f3f7ff);
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    border-top:4px solid #0a7a16;
+}
+
+.staff-card img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #0a7a16;
+}
+
+.staff-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:20px;
+    padding:20px;
+}
+</style>
+
+<!-- 🔥 TOP HEADER -->
+<div class="top-header">
+
+    <div class="top-left">
+
+        <img src="{{ company.company_logo if company.company_logo else '/assets/frappe/images/ui/avatar.png' }}">
+
+        <div>
+            <h2 style="margin:0; color:#0a7a16;">
+                {{ company.company_name }}
+            </h2>
+
+            <div style="font-size:14px;">
+                {{ contact.office_address or "Address not available" }}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="top-right">
+        <div>
+            <a href="#" onclick="setLang('mr')">मराठी</a> |
+            <a href="#" onclick="setLang('en')">English</a>
+        </div>
+        <div>📞 {{ contact.phone or "9876543210" }}</div>
+        <div>✉️ {{ contact.email or "info@apmc.com" }}</div>
+
+    </div>
+
+</div>
+<nav class="nav">
+    <a href="#" id="homeMenu">मुखपृष्ठ</a>
+    <a href="/about-us">आमच्याबद्दल</a>
+    <a href="/directors">संचालक मंडळ</a>
+    <a href="/staff">अधिकारी व कर्मचारी</a>
+    <a href="/bajar-rate">बाजार भाव</a>
+    <a href="#" id="auctionMenu">लिलाव माहिती</a>
+    <a href="#" id="newsMenu">बातम्या</a>
+    <a href="#" id="galleryMenu">गॅलरी</a>
+    <a href="#" id="contactMenu">संपर्क</a>
+</nav>
+
+<div class="staff-grid">
+
+{% for s in staff_list %}
+
+<div class="staff-card">
+
+    <img src="{{ s.photo if s.photo else '/assets/frappe/images/ui/avatar.png' }}">
+
+    <h3>{{ s.employee_name }}</h3>
+
+    <p>{{ s.designation }}</p>
+    <p>📞 {{ s.mobile }}</p>
+    <p>📧 {{ s.email }}</p>
+    <p>📅 {{ s.joining_date }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>

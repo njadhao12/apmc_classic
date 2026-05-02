@@ -1,0 +1,182 @@
+{% set company_list = frappe.get_all("Company",
+    fields=["company_name","company_logo"],
+    limit=1) %}
+{% set company = company_list[0] if company_list else {} %}
+
+{% set contact_list = frappe.get_all("Contact Details",
+    fields=["office_address","phone","email"],
+    limit=1) %}
+{% set contact = contact_list[0] if contact_list else {} %}
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<title>आमच्याबद्दल</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background: linear-gradient(to bottom, #eaf7ee, #ffffff);
+}
+
+/* 🔥 HEADER */
+.top-header{
+    background:#f2f2f2;
+    padding:10px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.top-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.top-left img{
+    height:70px;
+    width:70px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.top-right{
+    text-align:right;
+    font-size:14px;
+}
+
+/* 🔥 NAVBAR */
+.nav{
+    background: linear-gradient(to right, #0a7a16, #0f9d2f);
+    padding:14px 20px;
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    flex-wrap:wrap;
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:600;
+    padding:6px 10px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+.nav a:hover{
+    background:rgba(255,255,255,0.2);
+    color:#ffd700;
+}
+
+/* बाकी same CSS */
+.container{
+    max-width:1000px;
+    margin:50px auto;
+    padding:20px;
+}
+
+.box{
+    background:#ffffff;
+    padding:35px;
+    border-radius:16px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.1);
+    border-left:6px solid #0a7a16;
+}
+
+h1{
+    color:#0a7a16;
+}
+
+p{
+    line-height:30px;
+    font-size:18px;
+    color:#444;
+}
+
+ul li{
+    margin-bottom:8px;
+    font-size:17px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- 🔥 TOP HEADER -->
+<div class="top-header">
+
+    <div class="top-left">
+
+        <img src="{{ company.company_logo if company.company_logo else '/assets/frappe/images/ui/avatar.png' }}">
+
+        <div>
+            <h2 style="margin:0; color:#0a7a16;">
+                {{ company.company_name }}
+            </h2>
+
+            <div style="font-size:14px;">
+                {{ contact.office_address or "Address not available" }}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="top-right">
+        <div>
+            <a href="#" onclick="setLang('mr')">मराठी</a> |
+            <a href="#" onclick="setLang('en')">English</a>
+        </div>
+        <div>
+            📞 {{ contact.phone or "9876543210" }}
+        </div>
+
+        <div>
+            ✉️ {{ contact.email or "info@apmc.com" }}
+        </div>
+
+    </div>
+
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav">
+    <a href="#" id="homeMenu">मुखपृष्ठ</a>
+    <a href="/about-us">आमच्याबद्दल</a>
+    <a href="/directors">संचालक मंडळ</a>
+    <a href="/staff">अधिकारी व कर्मचारी</a>
+    <a href="/bajar-rate">बाजार भाव</a>
+    <a href="#" id="auctionMenu">लिलाव माहिती</a>
+    <a href="#" id="newsMenu">बातम्या</a>
+    <a href="#" id="galleryMenu">गॅलरी</a>
+    <a href="#" id="contactMenu">संपर्क</a>
+</nav>
+
+<div class="container">
+
+<div class="box">
+
+<h1>मंचर कृषी उत्पन्न बाजार समिती, मंचर</h1>
+
+<p>
+मंचर कृषी उत्पन्न बाजार समिती ही शेतकरी, व्यापारी आणि ग्राहक यांच्यातील
+व्यवहार सुलभ, पारदर्शक आणि विश्वासार्ह करण्यासाठी कार्यरत असलेली एक महत्त्वाची संस्था आहे.
+</p>
+
+<!-- बाकी content same -->
+
+</div>
+
+</div>
+
+</body>
+</html>
